@@ -23,9 +23,11 @@ def capture_website(url):
     os.makedirs(output_dir, exist_ok=True)
 
     options = webdriver.ChromeOptions()
+    options.binary_location = "/opt/render/project/.render/chrome/opt/google/chrome"  # <-- ADD THIS
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     driver.get(url)
